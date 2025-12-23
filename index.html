@@ -12,11 +12,17 @@
   <meta property="og:description" content="Shop premium laptops, desktops, and accessories. Order via WhatsApp for convenience.">
   <meta property="og:type" content="website">
   
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico">
   
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/functionality.css">
+  
+  
 </head>
 <body>
   <!-- Navbar -->
@@ -201,11 +207,78 @@
         <p>Our most popular items, handpicked for quality and value</p>
       </div>
       
-      <div id="featured-products" class="product-grid">
-        <!-- Products will be rendered by JavaScript -->
-        <div class="loading">
-          <div class="loading-spinner"></div>
+      <!-- Controls for filtering and sorting -->
+      <div class="controls-container">
+        <div class="search-box">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="search-input" class="search-input" placeholder="Search products...">
         </div>
+        
+        <div class="filters-container">
+          <select id="category-filter" class="filter-select">
+            <option value="">All Categories</option>
+            <!-- Categories will be populated by JavaScript -->
+          </select>
+          
+          <select id="sort-by" class="filter-select">
+            <option value="date-newest">Newest First</option>
+            <option value="date-oldest">Oldest First</option>
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
+            <option value="price-asc">Price (Low to High)</option>
+            <option value="price-desc">Price (High to Low)</option>
+          </select>
+          
+          <button id="refresh-btn" class="refresh-btn">
+            <i class="fas fa-sync-alt"></i> Refresh
+          </button>
+        </div>
+      </div>
+      
+      <!-- Stats Bar -->
+      <div class="stats-bar" id="stats-box" style="display: none;">
+        <div class="stats-item">
+          <span class="stats-label">Total Products:</span>
+          <span class="stats-value" id="total-products">0</span>
+        </div>
+        <div class="stats-item">
+          <span class="stats-label">Categories:</span>
+          <span class="stats-value" id="total-categories">0</span>
+        </div>
+        <div class="stats-item">
+          <span class="stats-label">Price Range:</span>
+          <span class="stats-value" id="price-range">$0 - $0</span>
+        </div>
+        <div class="stats-item">
+          <span class="stats-label">Total Size:</span>
+          <span class="stats-value" id="total-size">0 MB</span>
+        </div>
+      </div>
+      
+      <!-- Search Info -->
+      <div id="search-info" style="margin-bottom: 1rem; color: #6b7280;"></div>
+      
+      <!-- Products Grid -->
+      <div id="featured-products" class="product-grid">
+        <!-- Loading State -->
+        <div id="loading" class="loading">
+          <div class="loading-spinner"></div>
+          <p>Loading products...</p>
+        </div>
+        
+        <!-- No Results State -->
+        <div id="no-results" class="no-results" style="display: none;">
+          <i class="fas fa-search"></i>
+          <h3>No products found</h3>
+          <p>Try adjusting your search or filter criteria</p>
+        </div>
+        
+        <!-- Products will be rendered by JavaScript here -->
+      </div>
+      
+      <!-- Update Info -->
+      <div id="update-info" style="text-align: center; margin-top: 2rem; color: #6b7280; font-size: 0.875rem;">
+        Last updated: <span id="last-updated">Never</span>
       </div>
     </div>
   </section>
@@ -275,16 +348,7 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="js/config.js"></script>
-  <script src="js/gallery.js"></script>
-  <script>
-    function toggleMobileNav() {
-      const mobileNav = document.getElementById('mobile-nav');
-      if (mobileNav) {
-        mobileNav.classList.toggle('active');
-      }
-    }
-  </script>
+  <!-- JavaScript -->
+  <script src="js/script-index.js"></script>
 </body>
 </html>

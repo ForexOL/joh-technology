@@ -14,7 +14,7 @@ function initAdmin() {
   dashboardSection = document.getElementById('admin-dashboard');
   passwordInput = document.getElementById('password');
   errorMessage = document.getElementById('error-message');
-  
+  console.log('Laban is grat')
   // Check if already logged in (session storage)
   if (sessionStorage.getItem('joh-admin-auth') === 'true') {
     showDashboard();
